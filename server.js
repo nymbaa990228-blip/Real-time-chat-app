@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
 
         socket.broadcast.emit("system:message", {
             text: `${username} joined the chat`,
-            timeStamp: Data.now(),
+            timeStamp: Date.now(),
         });
         io.emit("users:update", Object.values(users));
     });
@@ -34,7 +34,7 @@ io.on("connection", (socket) => {
         io.emit("chat:message", {
             username,
             text: msg,
-            timeStamp: Data.now(),
+            timeStamp: Date.now(),
             socketId: socket.id,
         });
     });
@@ -54,7 +54,7 @@ io.on("connection", (socket) => {
 
             io.emit("system:message", {
                 text: `${username} left the chat`,
-                timeStamp: Data.now(),
+                timeStamp: Date.now(),
             });
 
             io.emit("users:update", Object.values(users));
